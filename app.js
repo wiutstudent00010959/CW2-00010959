@@ -12,7 +12,14 @@ app.use(express.urlencoded({extended: false}))
 
 //localhost:8000
 app.get('/', (req, res) => {
-    res.render('home')
+    fs.readFile('./data/todos.json', (err, data) => {
+    if (err) throw err
+    const to = JSON.parse(data)
+    res.render('home', { todos: todos })
+ })
+    
+    
+    
 })
 
 app.post('/add', (req, res) => {
@@ -22,8 +29,9 @@ app.post('/add', (req, res) => {
         res.render('home', { error: true})
         
     } else { //else try reead dtatabse file, if not possible, throw error
-        FileSystem.readFile('./data/todos.json', (err, data)) => {
+        fs.readFile('./data/todos.json', (err, data) => {
             if (err) throw err
+            const todos = JSON.parse(data)
             const todo = {
                 id: id(),
                 description: formData.todo,
@@ -35,10 +43,10 @@ app.post('/add', (req, res) => {
                 if (err) throw err
                 
                 res.render('home', { success: true} )
-            }
+            })
             
-            )
-        }
+            
+        })
    
 
     }

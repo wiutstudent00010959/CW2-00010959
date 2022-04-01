@@ -1,13 +1,14 @@
 extends layout.pug 
 
 block number1 
-  form.form(action='/add' method='POST')
+ form.form(action='/add' method='POST')
      input.input(type='text' placeholder='Add a new task' name='todo')
      button.btn Add
 
-  div.todos
-      p.todo Task 1: bla bla  
-      p.todo Task 1: bla bla  
-      p.todo Task 1: bla bla  
-      p.todo Task 1: bla bla  
-      p.todo Task 1: bla bla  
+ div.todos
+        if todos.length
+         each todo in todos
+             p.todo #{ todo.description }
+
+         else 
+             p.todo No taslks cyrrently available 

@@ -1,6 +1,14 @@
 extends layout.pug 
 
 block number1 
+ div.centred
+     if error 
+         p.error Plese enter the text of your task
+     if success
+         p.success Congratulations!
+     if deleted 
+         p.deleted Your task was deleted!
+         
  form.form(action='/add' method='POST')
      input.input(type='text' placeholder='Add a new task' name='todo')
      button.btn Add
@@ -11,4 +19,4 @@ block number1
              p.todo #{ todo.description }
 
          else 
-             p.todo No taslks cyrrently available 
+             p.todo No tasks currently available 

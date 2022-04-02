@@ -7,60 +7,85 @@ const fs = require('fs')
 const PORT = 3000
 
 app.set('view engine', 'pug')
-app.use('/static', express.static('assets')) //assets
+app.use('/static', express.static('/public')) //assets
 app.use(express.urlencoded({extended: false}))
 
 //localhost:8000
 app.get('/', (req, res) => {
     fs.readFile('./data/todos.json', (err, data) => {
-    if (err) throw err
-    const to = JSON.parse(data)
-    res.render('home', { todos: todos })
- })
-    
-    
-    
-})
+        if (err) throw err
 
+        const todos = JSON.parse(data)   
+
+        res.render('home', { todos: todos }) 
+    })
+})
 app.post('/add', (req, res) => {
     const formData = req.body
-//if there is no input, send error
-    if (formData.todo.trim() =='') {
-        res.render('home', { error: true})
+
+    if(formData.todo.trim() == ''){
+
         
-    } else { //else try reead dtatabse file, if not possible, throw error
         fs.readFile('./data/todos.json', (err, data) => {
             if (err) throw err
+
             const todos = JSON.parse(data)
+
+            res.render('home', { error: true, todos: todos })
+        })
+    }   else{
+        fs.readFile('./data/todos.json', (err, data) => {
+            if (err) throw err
+
+            const todos = JSON.parse(data)
+
             const todo = {
                 id: id(),
                 description: formData.todo,
-                done: false //this will serve as property namewhen CRUD is implemented
+                done: false
             }
+
             todos.push(todo)
 
             fs.writeFile('./data/todos.json', JSON.stringify(todos), (err) => {
                 if (err) throw err
-                
-                res.render('home', { success: true} )
+
+                fs.readFile('./data/todos.json', (err, data) => {
+                    if (err) throw err
+
+                    const todos = JSON.parse(data)
+
+                    res.render('home', { success: true, todos: todos })
+                })
             })
-            
-            
         })
-   
-
     }
-}) 
+})
 
-//app.listen(PORT, (err) => {
-//    if (err) throw err
-//    console.log(`This app is running on port ${PORT}`)
-//})
+
+app.get('/:id/delete', (req, res) =>{
+    const id = req.params.id
+
+    fs.readFile('./data/todos.json', (err, data) =>{
+        if (err) throw err
+
+        const todos = JSON.parse(data)
+
+        const filteredTodos = todos.filter(todo => todo.id != id)
+
+        fs.writeFile('./data/todos.json', JSON.stringify(filteredTodos), (err) =>{
+            if (err) throw err
+            res.render('home', {todos: filteredTodos, deleted: true})
+        })
+    })
+})
+
+app.listen(PORT, (err) => {
+    if (err) throw err
+    console.log(`This app is running on port ${PORT}`)
+})
 
 
 function id() {
-    // Math.random should be unique because of its seeding algorithm.
-    // Convert it to base 36 (numbers + letters), and grab the first 9 characters
-    // after the decimal.
     return '_' + Math.random().toString(36).substr(2, 9);
-  }
+}

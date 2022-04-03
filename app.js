@@ -8,11 +8,8 @@ const PORT = 3000
 
 app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
-//app.use('/static', express.static('/public')) //assets
-//app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended: false}))
 
-//localhost:8000
 app.get('/', (req, res) => {
     fs.readFile('./data/todos.json', (err, data) => {
         if (err) throw err

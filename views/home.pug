@@ -1,18 +1,16 @@
 extends layout.pug 
-
 block number1 
  div.centred
      if error 
-         p.error Plese enter the text of your task
+         p.error Plese enter the text of your task!
      if success
-         p.success Congratulations!
+         p.success Your task was added!
      if deleted 
          p.deleted Your task was deleted!
-         
- form.form(action='/add' method='POST')
+ .formdiv 
+    form.form(action='/add' method='POST')
      input.input(type='text' placeholder='Add a new task' name='todo')
-     button.btn Add
-
+     button.btn Add     
  div.todos
         if todos.length
          each todo in todos
@@ -23,6 +21,7 @@ block number1
                       a.undone(href=`/${ todo.id}/update`) #{ todo.description }    
                 a.delete(href=`/${ todo.id }/delete`) Delete 
 
-         else 
-             p.todo No tasks currently available 
- p.footer "This web application was created to fulfill Web Technology module’s requirements and does not represent an actual company or service"
+        else 
+             p.todo The list of tasks is empty, sorry!
+ .footer 
+     p "This web application was created to fulfill Web Technology module’s requirements and does not represent an actual company or service"

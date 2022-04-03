@@ -2,9 +2,18 @@ doctype html
 html(lang="en")
     head
         title Task manager
-        link(rel='stylesheet', href='/assets/style.css')
-    body 
-     div.wrapper 
-         h1.logo Task manager
+        link(rel='stylesheet' href='/static/styles/style.css' type='text/css')
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+        link(href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap' rel='stylesheet')
 
-         block number1
+    body 
+        
+        div.wrapper 
+             .hint Need help?
+                 span.hintText To change the task status to "Done", click the task. #[br] To "Undo" the task, click it again. #[br]Have a productive time!
+        
+             img.icon(src='/static/images/online_survey.png' alt='task-icon')
+             h1.logo Task manager
+
+             block number1

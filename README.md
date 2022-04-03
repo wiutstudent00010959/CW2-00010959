@@ -3,6 +3,10 @@
 #### About the application
 The app is called "Task manager" and allows the user to manage daily tasks, or TO-DOs. The user can delete, add and change the status of tasks, while viewing the list of them. For better user experience a help hint is added at the top of the application page.
 
+The "online_survey.png" is an icon used for layout.pug is from https://uxwing.com/online-survey-icon/
+Reference: 
+UXWing. (no date). Online Survey Icon. *UXWing.* Available from https://uxwing.com/online-survey-icon/ [Accessed 3 April 2022].
+
 #### Instructions
 1.Download the source code
 ```

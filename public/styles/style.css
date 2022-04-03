@@ -27,21 +27,20 @@
     text-align: left;
     color: #806D40;
     display: inline-block;
-    border-bottom: 1px dotted #806D40;
-    max-width: 92px;
+    max-width: 180px;
 }
 .hint .hintText {
-    opacity: 0;
+    opacity: o;
     transition: opacity 1s;
     visibility: hidden;
     padding: 10px;
     border-radius: 8px;
-    width: 200px;
+    width: 300px;
     background-color: #806D40;
     color: #fff;
     text-align: left;
     top: -5px;
-    left: 115%;
+    left: 110%;
     position: absolute;
     z-index: 1;
 }
@@ -55,7 +54,7 @@
     border-style: solid;
     border-color: transparent #806D40 transparent transparent;
     position: absolute;
-    top: 10%;
+    top: 15%;
     right: 100%;
     margin-top: -5px;
 }

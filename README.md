@@ -1,9 +1,9 @@
 # CW2-00010959
 “This web application was created to fulfill Web Technology module’s requirements and does not represent an actual company or service”
 #### About the application
-The app is called "Task manager" and allows the user to manage daily tasks, or TO-DOs. The user can delete, add and change the status of tasks, while viewing the list of them. For better user experience a help hint is added at the top of the application page.
-
-The "online_survey.png" is an icon used for layout.pug is from https://uxwing.com/online-survey-icon/
+The app is called "Task manager" and allows the user to manage daily tasks, or TO-DOs. The user can delete, add and change the status of tasks, while viewing the list of them. <br> For better user experience a help hint is added at the top of the application page.
+<br>
+The "online_survey.png" is an icon used for layout.pug is from https://uxwing.com/online-survey-icon/<br>
 Reference: 
 UXWing. (no date). Online Survey Icon. *UXWing.* Available from https://uxwing.com/online-survey-icon/ [Accessed 3 April 2022].
 
